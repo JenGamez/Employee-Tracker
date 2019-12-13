@@ -10,7 +10,7 @@ CREATE TABLE department (
     PRIMARY KEY (id)
 );
 
-CREATE TABLE role (
+CREATE TABLE employee_role (
     id INT NOT NULL AUTO_INCREMENT,
     title VARCHAR(30),
     salary DECIMAL(10,4),
@@ -23,6 +23,6 @@ CREATE TABLE employee (
     first_name VARCHAR(30),
     last_name VARCHAR(30),
     role_id INT NOT NULL,
-    manager_id NOT NULL
-    PRIMARY KEY (id)
+    index role_id (role_id),
+    FOREIGN KEY role_id REFERENCES (id) on DELETE CASCADE 
 );

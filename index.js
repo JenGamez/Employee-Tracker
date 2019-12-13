@@ -4,17 +4,12 @@ var inquirer = require("inquirer");
 // create the connection information for the sql database
 var connection = mysql.createConnection({
     host: "localhost",
-
-    // Your port; if not 3306
     port: 3306,
-
-    // Your username
     user: "root",
-
-    // Your password
     password: "Nirvana74!",
     database: "employee_tracker"
 });
+
 
 connection.connect(function (err) {
     if (err) throw err;
@@ -25,29 +20,69 @@ connection.connect(function (err) {
 function start() {
     inquirer
         .prompt({
-            name: "start",
+            name: "action",
             type: "list",
-            message: "Would you like to [POST] an auction or [BID] on an auction?",
+            message: "What would you like to do?",
             choices: [
                 "View All Employees",
                 "View All Employees By Department",
-                "View All Employees By Manager",
+                "View All Roles",
                 "Add Employee",
-                "Remove Employee",
+                "Add Department",
+                "Add Role",
                 "Update Employee Role",
-                "Update Employee Manager"
+                "Remove Department",
+                "Remove Roles",
+                "Remove Employees"
             ]
         })
         .then(function (answer) {
-            // based on their answer, either call the bid or the post functions
-            if (answer.postOrBid === "POST") {
-                postAuction();
-            }
-            else if (answer.postOrBid === "BID") {
-                bidAuction();
-            } else {
-                connection.end();
+            // based on user answer, switch statements below
+            switch (answer.action) {
+                case "View All Employees":
+                    viewEmployees();
+                    break;
+
+                case "View All Employees By Department":
+                    viewEmployessByDepartment();
+                    break;
+
+                case "View All Roles":
+                    viewRoles();
+                    break;
+
+                case "Add Employee":
+                    addEmployee();
+                    break;
+
+                case "Add Department":
+                    addDepartment();
+                    break;
+
+                case "Add Role":
+                    addRole();
+                    break;
+
+                case "Update Employee Role":
+                    updateEmployeeRole();
+                    break;
+
+                case "Remove Department":
+                    removeDepartment();
+                    break;
+
+                case "Remove Roles":
+                    removeRoles();
+                    break;
+
+                case "Remove Employees":
+                    removeEmployees();
+                    break;
+
             }
         });
 }
+
+// Functions for all the choices
+
 

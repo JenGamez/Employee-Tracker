@@ -23,6 +23,6 @@ CREATE TABLE employee (
     first_name VARCHAR(30),
     last_name VARCHAR(30),
     role_id INT NOT NULL,
-    index role_id (role_id),
-    FOREIGN KEY role_id REFERENCES (id) on DELETE CASCADE 
+    manager_id INT NOT NULL,
+    PRIMARY KEY (id)
 );

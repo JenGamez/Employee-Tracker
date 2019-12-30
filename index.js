@@ -107,17 +107,17 @@ function viewEmployees() {
 
 }
 
-function viewEmployessByDepartment() {
-    connection.query("SELECT * FROM department", function (err, res) {
-        for (var i = 0; i < res.length; i++) {
-            if (res[i]) {
-                console.log(res[i].id + "\t" + res[i].name);
-            }
+// function viewEmployessByDepartment() {
+//     connection.query("SELECT * FROM employee LEFT JOIN employee_role ON department_id =  ", function (err, res) {
+//         for (var i = 0; i < res.length; i++) {
+//             if (res[i]) {
+//                 console.log(res[i].id + "\t" + res[i].name);
+//             }
 
-        }
-        start()
-    })
-}
+//         }
+//         start()
+//     })
+// }
 
 function viewRoles() {
     connection.query("SELECT * FROM employee_role", function (err, res) {

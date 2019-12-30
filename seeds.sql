@@ -2,35 +2,44 @@
 
 USE employee_tracker;
 
--- DEPARTMENT DATA
+-- DEPARTMENT DATA 
+
+- WORKED!
 INSERT INTO department (name)
 VALUES ("Sales"), ("Engineering"), ("Finance"), ("Legal");
+-- ________________________________________________________________________________________
 
--- EMPLOYEE ROLE DATA
+-- EMPLOYEE ROLE DATA 
+
+-- - WORKED!
 INSERT INTO employee_role (title) 
 VALUES ("Sales Lead"), ("Salesperson"), ("Lead Engineer"), ("Software Engineer"), ("Account Manager"), ("Accountant"), ("Legal Team Lead");
 
+-- NOT WORKING!  ERROR: COLUMN COUNT DOESN'T MATCH VALUE COUNT AT ROW 1
 INSERT INTO employee_role (salary)
 VALUES (100,000), (80,000), (150,000), (120,000), (125,000), (250,000), (190,000);
 
--- THIS SHOULD BE A FOREIGN KEY, I THINK, BUT HOW TO DO THIS?
+-- THIS IS A FOREIGN KEY, SO WHY DOES'T IT AUTO FILL WITH DEPARTMENT ID?  
 INSERT INTO employee_role (department_id)
-VALUES ()
+VALUES ();
+
+-- ________________________________________________________________________________________
 
 -- EMPLOYEE DATA
-INSERT INTO employee (first name)
+
+-- WORKED!
+INSERT INTO employee (first_name)
 VALUES ("John"), ("Mike"), ("Ashley"), ("Kevin"), ("Malia"), ("Sarah"), ("Tom"), ("Christian");
 
-INSERT INTO employee (last name)
+-- WORKED!  I DIDN'T GET AN ERROR, BUT THE VALUES AREN'T SHOWING UP IN TABLE
+INSERT INTO employee (last_name)
 VALUES ("Doe"), ("Chan"), ("Rodriguez"), ("Tupik"), ("Brown"), ("Lourd"), ("Alen"), ("Eckenrode");
 
--- THIS SHOULD BE A FOREIGN KEY, I THINK, BUT HOW TO DO THIS?
+-- THIS IS A FOREIGN KEY, SO WHY DOES'T IT AUTO FILL WITH ROLE ID?  
 INSERT INTO employee (role_id)
-VALUES ()
+VALUES ();
 
--- THIS SHOULD BE A FOREIGN KEY, I THINK, BUT HOW TO DO THIS?
+-- THIS IS A FOREIGN KEY, SO WHY DOES'T IT AUTO FILL WITH MANAGER ID??  
 INSERT INTO employee (manager_id)
-VALUES ()
-
-
+VALUES ();
 

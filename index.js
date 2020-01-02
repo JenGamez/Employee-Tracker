@@ -347,6 +347,7 @@ function updateEmployeeRole() {
                 function (error, res) {
                   if (error) throw err;
                   console.log(res)
+                  start();
                 }
               )
             }

@@ -327,26 +327,25 @@ function updateEmployeeRole() {
       ])
         .then(function (answer) {
 
-          connection.query("SELECT id FROM employee_role WHERE title = ? ",
+          connection.query("SELECT id FROM employee_role WHERE title = ?",
             [answer.new_role],
 
             function (err, res) {
-              console.log(res)
+              console.log('ID of selected employee_role', res, res[0].id, answer.last_name)
               if (err) throw err;
-              connection.query("UPDATE employee SET ? WHERE ?"
+              connection.query("UPDATE employee SET ? WHERE ?",
               [
                 {
-                  role_id: res.id
-                }
-                ,
+                  role_id: res[0].id
+                },
                 {
                   last_name: answer.last_name
                 }
-
-              ],
-                function (error, res) {
-                  if (error) throw err;
-                  console.log(res)
+              ], function (error, res) {
+                  if (error){
+                    console.log('AHHHHH', error)
+                    throw err;
+                  }
                   start();
                 }
               )
